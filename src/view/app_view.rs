@@ -56,6 +56,7 @@ impl AppView {}
 
 impl eframe::App for AppView {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+        ctx.set_pixels_per_point(1.5);
         egui::CentralPanel::default().show(ctx, |_| {
             egui::TopBottomPanel::top("top").show(ctx, |ui| {
                 ui.horizontal(|ui| {

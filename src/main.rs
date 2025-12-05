@@ -37,10 +37,17 @@ fn configure_fonts(ctx: &egui::Context) {
 }
 
 fn main() -> eframe::Result {
-    SimpleLogger::new()
+    if cfg!(debug_assertions) {
+        SimpleLogger::new()
         .with_level(log::LevelFilter::Debug)
         .init()
         .unwrap();
+    } else {
+        SimpleLogger::new()
+        .with_level(log::LevelFilter::Off)
+        .init()
+        .unwrap();
+    }
 
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default().with_maximized(true),
